@@ -1,5 +1,5 @@
 import { PaletteMode } from "@mui/material";
-import { amber, grey, } from "@mui/material/colors";
+import { grey, indigo, blue } from "@mui/material/colors";
 import type { NextPage } from "next";
 import { SidebarNav } from "../components/layout/SidebarNav";
 import AppBarComponent from "../components/layout/AppBarComponent";
@@ -7,6 +7,7 @@ import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { AppMenu } from "../components/layout/AppMenu";
 import { MENU_ITEMS } from "../components/data/menu";
 import React from "react";
+import CoinMarketTrending from "../components/trending/CoinMarketTrending";
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -14,8 +15,12 @@ const getDesignTokens = (mode: PaletteMode) => ({
     ...(mode === "light"
       ? {
           // palette values for light mode
-          primary: amber,
-          divider: amber[200],
+          primary: indigo,
+          divider: indigo[200],
+          background: {
+            default: grey[50],
+            paper: grey[50],
+          },
           text: {
             primary: grey[900],
             secondary: grey[800],
@@ -24,9 +29,9 @@ const getDesignTokens = (mode: PaletteMode) => ({
       : {
           // palette values for dark mode
           primary: grey,
-          divider: amber[200],
+          divider: "#00C853",
           background: {
-            default:grey[900],
+            default: grey[900],
             paper: grey[900],
           },
           text: {
@@ -72,6 +77,7 @@ const Home: NextPage = () => {
             isDrawerOpen={sideBarToggle}
             children={<AppMenu links={MENU_ITEMS} />}
           />
+          <CoinMarketTrending />
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>

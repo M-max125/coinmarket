@@ -1,4 +1,5 @@
 import {
+  Badge,
   ListItemIcon,
   ListItemText,
   MenuItem,
@@ -8,7 +9,8 @@ import {
 } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import React from "react";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
+import { ConnectButton } from "web3uikit";
 
 type IconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
   muiName: string;
@@ -30,14 +32,19 @@ export const AppMenu: React.FC<AppMenuLinksProps> = ({
   return (
     <div>
       <MenuList>
+        <MenuItem sx={{backgroundColor:'#4050B5'}}>
+          <ConnectButton />
+        </MenuItem>
         {links.map((link, id) => (
           <MenuItem key={id} onClick={() => menuClickHandler}>
-            <ListItemIcon>{<link.icon fontSize="small" />}</ListItemIcon>
+            <ListItemIcon>{<link.icon fontSize="medium" />} </ListItemIcon>
             <ListItemText>{link.label}</ListItemText>
           </MenuItem>
         ))}
         <MenuItem>
-        <ListItemIcon><SearchIcon fontSize="small"/></ListItemIcon>
+          <ListItemIcon>
+            <SearchIcon fontSize="medium" />
+          </ListItemIcon>
           <TextField id="standard-basic" label="Search" variant="standard" />
         </MenuItem>
       </MenuList>
