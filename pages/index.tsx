@@ -8,6 +8,7 @@ import { AppMenu } from "../components/layout/AppMenu";
 import { MENU_ITEMS } from "../components/data/menu";
 import React from "react";
 import CoinMarketTrending from "../components/trending/CoinMarketTrending";
+import CMCTable from "../components/cmc-table/CMCTable";
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -78,6 +79,7 @@ const Home: NextPage = () => {
             children={<AppMenu links={MENU_ITEMS} />}
           />
           <CoinMarketTrending />
+          <CMCTable/>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>

@@ -1,13 +1,17 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import {MoralisProvider} from 'react-moralis'
+import { CoinMarketCapProvider } from '../context/context'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log(process.env.NEXT_PUBLIC_APP_ID)
+  
   return <>
     <MoralisProvider serverUrl={ process.env.NEXT_PUBLIC_SERVER! } appId={process.env.NEXT_PUBLIC_APP_ID!} >
-    <Component {...pageProps} />
+      <CoinMarketCapProvider>
+        <Component {...pageProps} />
+    </CoinMarketCapProvider>
+    
     </MoralisProvider>
     
 
