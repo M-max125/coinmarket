@@ -7,10 +7,12 @@ import {
   BarElement,
   PointElement,
   LineElement,
+  LineController,
   Legend,
   Tooltip,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+import 'chart.js/auto';
 
 const randomPoints = [
   [65, 59, 100, 80, 10, 56, 72, 45, 67, 55, 42],
@@ -27,6 +29,7 @@ const getRandomPoints = () => {
 
 ChartJS.register(
   LinearScale,
+  LineController,
   CategoryScale,
   BarElement,
   PointElement,
@@ -57,7 +60,7 @@ export const data = {
       borderWidth: 2,
     },
     {
-      type: "bar" as const,
+      type: "bar" as ChartType,
       label: "Purchase cap",
       backgroundColor: "rgb(53, 162, 235)",
       data: getRandomPoints(),
