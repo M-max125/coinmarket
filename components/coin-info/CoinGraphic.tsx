@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Chart as ChartJS,
+  ChartType,
   LinearScale,
   CategoryScale,
   BarElement,
@@ -40,7 +41,7 @@ export const data = {
   labels,
   datasets: [
     {
-      type: "line" as const,
+      type: "line" as ChartType,
       label: "Exponential",
       borderColor: "rgb(255, 99, 132)",
       borderWidth: 2,
@@ -48,7 +49,7 @@ export const data = {
       data: getRandomPoints(),
     },
     {
-      type: "bar" as const,
+      type: "bar" as ChartType,
       label: "Sale cap",
       backgroundColor: "rgb(75, 192, 192)",
       data: getRandomPoints(),
