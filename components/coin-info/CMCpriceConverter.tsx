@@ -10,7 +10,7 @@ import tera from '../../assets/tera.png'
 import solana from '../../assets/solana.png'
 import avalanche from '../../assets/avalanche.png'
 import bnb from '../../assets/bnb.png'
-import Image, { StaticImageData } from 'next/Image'
+import Image, { StaticImageData } from 'next/image'
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
