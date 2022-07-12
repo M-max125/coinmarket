@@ -69,11 +69,11 @@ const CMCTable = () => {
         breakLabel="..."
         nextLabel=" >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel="< "
         containerClassName="mx-auto w-full md:w-2/5 py-3 text-xs flex flex-wrap items-center justify-between px-0 sm:px-6"
-        pageLinkClassName="border-gray-300 text-gray-500 hover:text-white hover:bg-gray-700 inline-flex relative items-center px-2 md:px-4 py-2 border text-sm font-medium"
+        pageLinkClassName="border-gray-300 text-gray-500 hover:text-white hover:bg-gray-700 inline-flex relative items-center px-2 md:px-4 py-2 border text-sm font-medium cursor-pointer"
         previousLinkClassName=" text-gray-500   inline-flex relative items-center px-2 md:px-4 py-2  text-sm font-medium"
         nextLinkClassName=" text-gray-500  inline-flex relative items-center px-2 md:px-4 py-2 text-sm font-medium"
         activeClassName="text-white bg-gray-700"
