@@ -2,13 +2,19 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { MoralisProvider } from "react-moralis";
 import { CoinMarketCapProvider } from "../context/context";
-import { PaletteMode, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import {
+  PaletteMode,
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+} from "@mui/material";
 import { indigo, grey } from "@mui/material/colors";
 import React from "react";
 import { MENU_ITEMS } from "../components/data/menu";
 import AppBarComponent from "../components/layout/AppBarComponent";
 import { AppMenu } from "../components/layout/AppMenu";
 import { SidebarNav } from "../components/layout/SidebarNav";
+import { GunProvider } from "../context/gunContext";
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -72,21 +78,23 @@ function MyApp({ Component, pageProps }: AppProps) {
         serverUrl={process.env.NEXT_PUBLIC_SERVER!}
         appId={process.env.NEXT_PUBLIC_APP_ID!}
       >
-        <CoinMarketCapProvider>
-          <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <AppBarComponent handleDrawerToggle={handleDrawerToggle} />
-              <SidebarNav
-                handleDrawerToggle={handleDrawerToggle}
-                isOpen={sideBarToggle}
-                isDrawerOpen={sideBarToggle}
-                children={<AppMenu links={MENU_ITEMS} />}
-              />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </ColorModeContext.Provider>
-        </CoinMarketCapProvider>
+        <GunProvider>
+          <CoinMarketCapProvider>
+            <ColorModeContext.Provider value={colorMode}>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <AppBarComponent handleDrawerToggle={handleDrawerToggle} />
+                <SidebarNav
+                  handleDrawerToggle={handleDrawerToggle}
+                  isOpen={sideBarToggle}
+                  isDrawerOpen={sideBarToggle}
+                  children={<AppMenu links={MENU_ITEMS} />}
+                />
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </ColorModeContext.Provider>
+          </CoinMarketCapProvider>
+        </GunProvider>
       </MoralisProvider>
     </>
   );

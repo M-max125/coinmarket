@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import ChevronDown from "../../assets/svg/chevronDown"
-import ChevronUp from "../../assets/svg/chevronUp"
-import shiba from "../../assets/shiba.png"
+import ChevronDown from "../../assets/svg/chevronDown";
+import ChevronUp from "../../assets/svg/chevronUp";
+import shiba from "../../assets/shiba.png";
 import Image from "next/image";
 import PostButton from "./PostButton";
 import ChatMessagesCard from "./ChatMessagesCard";
+import { faker } from "@faker-js/faker";
+import { GunContext } from "../../context/gunContext";
+import { Message } from "@mui/icons-material";
 
 const styles = {
   bullishLabel: `flex cursor-pointer active:bg-green-600 items-center text text-green-600 border border-green-600 h-min px-2 rounded-lg`,
@@ -23,9 +26,45 @@ const styles = {
 
 const CapChat = () => {
   const [chatMessage, setChatMessage] = useState("");
-    const [bullishValueState, setBullishValueState] = useState(true);
-    
-    const sendMessage = () => { }
+  const [bullishValueState, setBullishValueState] = useState(true);
+
+  const { gun, getMessages, state } = useContext(GunContext);
+
+  useEffect(() => {
+    getMessages?.("GUN_REF_7");
+  }, []);
+
+  const sendMessage = () => {
+    if (chatMessage.trim() === "") return;
+    const messagesRef = gun.get("GUN_REF_7");
+
+    const newMessage = {
+      sender: faker.name.findName(),
+      avatar: shiba,
+      content: chatMessage.trim(),
+      isBullish: bullishValueState,
+      createdAt: Date().substring(4, 11),
+      messageId: Date.now(),
+    };
+    messagesRef.set(newMessage);
+    setChatMessage("");
+  };
+
+  const formattedMessagesArray = () => {
+    const uniqueArray = state!.messages.filter((value, index) => {
+      const _value = JSON.stringify(value);
+
+      return (
+        index ===
+        state?.messages.findIndex((obj) => {
+          return JSON.stringify(obj) === _value;
+        })
+      );
+    });
+    return uniqueArray;
+  };
+
+
   return (
     <>
       <div className={styles.chat}>
@@ -87,14 +126,31 @@ const CapChat = () => {
       <input
         type="text"
         className={styles.input}
-              placeholder="What's happening on visualizer?"
-              value={chatMessage}
-              onChange={(e) => setChatMessage(e.target.value)}
+        placeholder="What's happening on visualizer?"
+        value={chatMessage}
+        onChange={(e) => setChatMessage(e.target.value)}
+      />
+      <div className={styles.postButtonContainer}>
+        <PostButton label="Post" onPress={sendMessage}/>
+      </div>
+      <div className="h-96 overflow-y-auto">
+      {formattedMessagesArray()
+        .slice(0)
+        .reverse()
+        .map((message, index) => (
+          <ChatMessagesCard
+            senderAvatar={'https://picsum.photos/200'}
+            key={index}
+            sender={message.sender}
+            content={message.content}
+            bullishState={message.isBullish}
+            timeStamp={message.createdAt}
+            likes={'2.7k'}
+            comments={'1k'}
           />
-          <div className={styles.postButtonContainer}>
-              <PostButton label='Post' onPress={sendMessage}/>
-          </div>
-          <ChatMessagesCard senderAvatar={shiba}/>
+        ))}
+      </div>
+   
     </>
   );
 };

@@ -25,15 +25,15 @@ const ChatMessagesCard: React.FC<{
   timeStamp?: string;
   sender?: string;
   bullishState?: boolean;
-  senderAvatar: StaticImageData;
-  likes?: number;
-  comments?: number;
+  senderAvatar: string;
+  likes?: string;
+  comments?: string;
 }> = (props) => {
   return (
     <div className={styles.chatCard}>
       <div className={styles.chatCardWrapper}>
         <div className={styles.flexCenter}>
-          <div className="w-10 md:w-14 h-8 md:h-10 relative">
+          <div className="w-10 md:w-14 h-9 md:h-12 relative">
             <Image
               src={props.senderAvatar}
               layout="fill"

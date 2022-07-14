@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 
 const PostButton: React.FC<{
   label: string;
-  onPress: () => void;
+  onPress?: () => void;
 }> = (props) => {
   const theme = useTheme();
   return (

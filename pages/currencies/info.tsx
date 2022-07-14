@@ -12,7 +12,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const styles = {
   activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
   tabItem: `px-2`,
-  tabContainer: `w-11/12 md:w-auto flex justify-center items-center mb-3 md:mb-0 mx-auto md:mx-0 p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-xs md:text-sm`,
+  tabContainer: `w-11/12 md:w-auto flex justify-center items-center mb-3 xl:mb-0 mx-auto md:mx-0 p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-xs md:text-sm`,
   info: `min-h-screen w-full`,
   main: `text-white mx-auto max-w-screen-2xl`,
   flexBetween: `flex justify-between`,
