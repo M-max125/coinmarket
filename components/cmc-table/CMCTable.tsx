@@ -4,6 +4,7 @@ import CMCTableHeader from "./CMCTableHeader";
 import CMCTableRow from "./CMCTableRow";
 import btc from "../../assets/btc.png";
 import ReactPaginate from "react-paginate";
+import CMCSwapCryptoModal from "./CMCSwapCryptoModal";
 
 const styles = {
   tableWrapper: `bg-[#323546] text-white text-xs md:text-base font-bold overflow-auto mx-4 rounded-`,
@@ -21,12 +22,12 @@ const CMCTable = () => {
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(contextData.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(contextData.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, contextData]);
+    setCurrentItems(contextData.topTenCoins.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(contextData.topTenCoins.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, contextData.topTenCoins]);
 
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % contextData.length;
+    const newOffset = (event.selected * itemsPerPage) % contextData.topTenCoins.length;
     setItemOffset(newOffset);
   };
 
@@ -78,6 +79,7 @@ const CMCTable = () => {
         nextLinkClassName=" text-gray-500  inline-flex relative items-center px-2 md:px-4 py-2 text-sm font-medium"
         activeClassName="text-white bg-gray-700"
       />
+       <CMCSwapCryptoModal/>
     </>
   );
 };

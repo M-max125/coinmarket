@@ -76,17 +76,23 @@ const CMCTableRow: React.FC<CMCTableRowProps> = (props) => {
         </td>
 
         <td className="text-xs md:text-base">{props.starNumber}</td>
-        {props.coinIcon && props.coinIcon ? (
-          <CMCTableCoinNameRow
-            name={props.coinName}
-            icon={props.coinIcon}
-            onClick={viewCoinDetails}
-          />
-        ) : (
-          <></>
-        )}
+        <td className="pr-5">
+          {" "}
+          {props.coinIcon && props.coinIcon ? (
+            <CMCTableCoinNameRow
+              name={props.coinName}
+              icon={props.coinIcon}
+              onClick={viewCoinDetails}
+            />
+          ) : (
+            <></>
+          )}
+        </td>
 
-        <td className="cursor-pointer text-xs md:text-base" onClick={viewCoinPrice}>
+        <td
+          className="cursor-pointer text-xs md:text-base"
+          onClick={viewCoinPrice}
+        >
           <p>${formatNumber(props.price)}</p>
         </td>
 
@@ -106,12 +112,16 @@ const CMCTableRow: React.FC<CMCTableRowProps> = (props) => {
 
         <td>
           <div>
-            <p className="text-xs md:text-base">{formatNumber(props.marketCapValue)}</p>
+            <p className="text-xs md:text-base">
+              {formatNumber(props.marketCapValue)}
+            </p>
           </div>
         </td>
         <td>
           <div>
-            <p className="text-xs md:text-base">{formatNumber(props.volumeValue)}</p>
+            <p className="text-xs md:text-base">
+              {formatNumber(props.volumeValue)}
+            </p>
             <p className="text-gray-400 text-xs md:text-base">
               {formatNumber(props.volumeCryptoValue)} {props.coinSymbol}
             </p>
@@ -120,12 +130,20 @@ const CMCTableRow: React.FC<CMCTableRowProps> = (props) => {
 
         <td>
           <div>
-            <p className="text-xs md:text-base">{formatNumber(props.circulatingSupply)}</p>
+            <p className="text-xs md:text-base">
+              {formatNumber(props.circulatingSupply)}
+            </p>
           </div>
         </td>
 
         <td>
-          <Image src={'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/7653.svg'} width={150} height={60} />
+          <Image
+            src={
+              "https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/7653.svg"
+            }
+            width={150}
+            height={60}
+          />
         </td>
 
         <td>

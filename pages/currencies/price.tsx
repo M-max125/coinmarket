@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import CoinPriceDetails from "../../components/coin-info/CoinPriceDetails";
+import CMCSwapCryptoModal from "../../components/cmc-table/CMCSwapCryptoModal";
 
 
 const PriceCurrency = () => {
@@ -30,6 +31,7 @@ const PriceCurrency = () => {
         coinPrice={coinPrice}
         coinSymbol={coinSymbol}
       />
+      <CMCSwapCryptoModal/>
     </>
   );
 };
