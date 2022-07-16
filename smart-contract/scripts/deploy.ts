@@ -1,5 +1,6 @@
 //const hre = require("hardhat");
-const {ethers} = require("hardhat");
+const { ethers } = require("hardhat");
+
 
 const main = async () => {
   const dogeFactory = await ethers.getContractFactory("DogeCoin");
@@ -35,3 +36,5 @@ const main = async () => {
       process.exit(1);
     }
   })()
+
+  export{}
