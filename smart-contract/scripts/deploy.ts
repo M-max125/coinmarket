@@ -1,5 +1,4 @@
-//const hre = require("hardhat");
-const { ethers } = require("hardhat");
+import { ethers } from "hardhat";
 
 
 const main = async () => {
@@ -37,4 +36,4 @@ const main = async () => {
     }
   })()
 
-  export{}
+  

@@ -1,15 +1,10 @@
-import { HardhatUserConfig, task } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-chai-matchers";
 import "@nomiclabs/hardhat-ethers";
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config({ path: ".env" })
 
-
-require("dotenv").config({ path: ".env" });
-//require("@nomiclabs/hardhat-waffle");
-//require("@nomiclabs/hardhat-ethers");
 
 const config: HardhatUserConfig = {
   solidity: "0.8.9",
